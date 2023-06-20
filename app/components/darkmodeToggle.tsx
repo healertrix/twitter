@@ -7,7 +7,7 @@ export default function DarkmodeToggle() {
 
   useEffect(() => {
     applyTheme();
-  }, [currentTheme]);
+  }, []);
 
   function getInitialTheme() {
     const userTheme = localStorage.getItem('theme');
