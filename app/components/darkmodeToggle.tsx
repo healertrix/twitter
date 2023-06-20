@@ -11,7 +11,7 @@ export default function DarkmodeToggle() {
 
     function getInitialTheme() {
         let userTheme = null;
-        let systemTheme = true;
+        let systemTheme = null;
         if (typeof window !== 'undefined' && window.localStorage) {
             userTheme = localStorage.getItem('theme');
              systemTheme = window.matchMedia(
