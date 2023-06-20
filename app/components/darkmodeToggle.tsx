@@ -9,8 +9,10 @@ export default function DarkmodeToggle() {
     applyTheme();
   }, [currentTheme]);
 
-  function getInitialTheme() {
-    const userTheme = localStorage.getItem('theme');
+    function getInitialTheme() {
+        if (typeof window !== 'undefined' && window.localStorage) {
+            const userTheme = localStorage.getItem('theme');
+        }
     const systemTheme = window.matchMedia(
       '(prefers-color-scheme: dark)'
     ).matches;
