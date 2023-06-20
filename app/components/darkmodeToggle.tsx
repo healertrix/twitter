@@ -11,12 +11,14 @@ export default function DarkmodeToggle() {
 
     function getInitialTheme() {
         let userTheme = null;
+        let systemTheme = true;
         if (typeof window !== 'undefined' && window.localStorage) {
-             userTheme = localStorage.getItem('theme');
+            userTheme = localStorage.getItem('theme');
+             systemTheme = window.matchMedia(
+              '(prefers-color-scheme: dark)'
+            ).matches;
         }
-    const systemTheme = window.matchMedia(
-      '(prefers-color-scheme: dark)'
-    ).matches;
+    
     return userTheme || (systemTheme ? 'dark' : 'light');
   }
 
