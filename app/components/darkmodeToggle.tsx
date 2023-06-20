@@ -10,7 +10,7 @@ export default function DarkmodeToggle() {
   }, [currentTheme]);
 
     function getInitialTheme() {
-        let userTheme = '';
+        let userTheme = null;
         if (typeof window !== 'undefined' && window.localStorage) {
              userTheme = localStorage.getItem('theme');
         }
