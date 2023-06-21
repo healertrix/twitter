@@ -29,7 +29,7 @@ export default function Sidebar() {
       <div className='col-span-1 h-full pr-4 md:pr-6'>
         <div className='flex flex-col items-end'>
           <div className='space-y-2 lg:w-[230px]'>
-            <SideBarLogo></SideBarLogo>
+            <SideBarLogo state={currentTheme}></SideBarLogo>
 
             {items.map((item, index) => {
               return (
@@ -43,7 +43,7 @@ export default function Sidebar() {
             })}
             <SideBarItem
               onClick={toggleTheme}
-              icon={currentTheme == 'dark' ? Moon:Sun}
+              icon={currentTheme == 'dark' ? Moon : Sun}
               label={currentTheme == 'dark' ? 'Dark Mode' : 'Light Mode '}
             ></SideBarItem>
             <SideBarItem

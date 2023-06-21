@@ -2,7 +2,10 @@ import { useRouter } from 'next/router';
 import Link from 'next/link';
 import { BsTwitter } from 'react-icons/bs';
 import { Twitter } from 'lucide-react';
-const SidebarLogo = () => {
+interface SidebarLogoProps { 
+    state: string;
+}
+const SidebarLogo = ({state}:SidebarLogoProps) => {
 //   const router = useRouter();
 
     return (
@@ -21,7 +24,10 @@ const SidebarLogo = () => {
         cursor-pointer
     '
         >
-          <BsTwitter size={30}/>
+          <BsTwitter
+            size={30}
+            color={state == 'light' ? 'rgb(14 165 233)' : 'white'}
+          />
         </div>
       </Link>
     );
