@@ -1,13 +1,18 @@
 'use client'
-import React from 'react'
+import React, {  useCallback } from 'react'
 import { FaFeather } from 'react-icons/fa';
 import { useRouter } from 'next/navigation';
+import useLoginModal from '../hooks/useLoginModal';
 export default function SideBarTweetBttn() {
-      const router = useRouter();
-
+  const router = useRouter();
+  const loginModal = useLoginModal()
+  const onClick = useCallback(() => {
+    loginModal.onOpen();
+   }, [loginModal]);
   return (
-      <div onClick={() => router.push('/')}>
-          <div className='
+    <div onClick={onClick}>
+      <div
+        className='
         mt-6
         lg:hidden
         rounded-full
@@ -22,10 +27,12 @@ export default function SideBarTweetBttn() {
         hover:bg-opacity-80
         transition
         cursor-pointer
-      '>
-              <FaFeather size={24} color='white'/>
-          </div>
-          <div className='
+      '
+      >
+        <FaFeather size={24} color='white' />
+      </div>
+      <div
+        className='
           mt-6
           hidden
           lg:block
@@ -39,12 +46,17 @@ export default function SideBarTweetBttn() {
             cursor-pointer
             
 
-          '>
-              <p className='hidden lg:block text-center font-semibold
+          '
+      >
+        <p
+          className='hidden lg:block text-center font-semibold
               text-white
               text-[20px]
-              '>Tweet</p>
-          </div>
+              '
+        >
+          Tweet
+        </p>
+      </div>
     </div>
   );
 }
