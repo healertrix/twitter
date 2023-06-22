@@ -1,15 +1,14 @@
 'use client'
 import { Button } from '@/components/ui/button';
-import Head from 'next/head';
+import Header from './custom_components/Header';
 export default function Home() {
   return (
     <>
-      <Head>
-        <title>Dark Mode Toggle</title>
-        <meta name='description' content='A cool twitter clone' />
-      </Head>
       
-      Hello World
+      <Header
+        // label='Home'
+      ></Header>
+     
     </>
   );
 }

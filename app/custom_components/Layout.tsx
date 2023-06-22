@@ -23,7 +23,6 @@ const Layout: React.FC<LayoutProps> = ({ children }) => {
             {children}
           </div>
           <Followbar></Followbar>
-          
         </div>
       </div>
     </div>
