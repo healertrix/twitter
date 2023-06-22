@@ -1,10 +1,10 @@
 import React, { ReactNode } from 'react';
 import Sidebar from './layout/Sidebar';
-import FollowBar from './layout/Followbar';
+import Followbar from './layout/Followbar';
 interface LayoutProps {
   children: ReactNode;
 }
-// import DarkmodeToggle from './darkmodeToggle';
+
 const Layout: React.FC<LayoutProps> = ({ children }) => {
   return (
     <div className='h-screen'>
@@ -20,10 +20,10 @@ const Layout: React.FC<LayoutProps> = ({ children }) => {
               dark:border-neutral-200
           '
           >
-            {/* <DarkmodeToggle /> */}
             {children}
           </div>
-          <FollowBar />
+          <Followbar></Followbar>
+          
         </div>
       </div>
     </div>
