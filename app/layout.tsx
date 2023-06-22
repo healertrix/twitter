@@ -16,20 +16,10 @@ export default function RootLayout({
   children: React.ReactNode
   })
 {
-  function t1() {
-    console.log('t1');
-    
-  }
+  
   return (
     <html lang='en'>
       <body className={inter.className}>
-        {/* <Modal
-          isOpen
-          actionLabel='Submit'
-          title='Test'
-          onClose={t1}
-          onSubmit={t1}
-        ></Modal> */}
         <RegisterModal />
         <LoginModal />
         <Layout>{children}</Layout>
