@@ -25,7 +25,7 @@ export default function SideBarItem({
             items-center
             justify-center
             p-4
-            hover:bg-blue-300
+            hover:bg-blue-500
             hover:bg-opacity-10
             cursor-pointer
             lg:hidden'
@@ -42,7 +42,8 @@ export default function SideBarItem({
         p-4
         rounded-full
          hover:bg-blue-300
-            hover:bg-opacity-10
+            hover:bg-opacity-40
+            dark:hover:bg-opacity-10
             cursor-pointer'
           onClick={onClick}
         >
