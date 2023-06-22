@@ -1,7 +1,6 @@
 'use client'
 import { Button } from '@/components/ui/button';
 import Head from 'next/head';
-import DarkModeToggle from './custom_components/darkmodeToggle';
 export default function Home() {
   return (
     <>
