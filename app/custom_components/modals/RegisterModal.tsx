@@ -1,3 +1,4 @@
+'use client'
 import React, { useCallback } from 'react';
 import useLoginModal from '../hooks/useLoginModal';
 import useRegisterModal from '../hooks/useRegisterModal';
