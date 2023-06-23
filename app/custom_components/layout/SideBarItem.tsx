@@ -1,20 +1,44 @@
+'use client'
 import { LucideIcon } from 'lucide-react';
+import { useCallback } from 'react';
+import { useRouter } from 'next/navigation';
+import useCurrentUser from '../hooks/useCurrentUser';
+import useLoginModal from '../hooks/useLoginModal';
 interface SideBarItemProps {
   // label={item.label} href = {item.href} icon = {item.icon}
   label?: string;
   href?: string;
   icon: LucideIcon;
   onClick?: () => void;
+  auth?: boolean;
 }
 export default function SideBarItem({
   label,
   href,
   icon: Icon,
   onClick,
+  auth,
 }: SideBarItemProps) {
+ const router = useRouter();
+ const loginModal = useLoginModal();
+
+ const { data: currentUser } = useCurrentUser();
+
+ const handleClick = useCallback(() => {
+   if (onClick) {
+     return onClick();
+   }
+
+   if (auth && !currentUser) {
+     loginModal.onOpen();
+   } else if (href) {
+     router.push(href);
+   }
+ }, [router, href, auth, loginModal, onClick, currentUser]);
+
   return (
     <>
-      <div className='flex flex-row items-center' onClick={onClick}>
+      <div className='flex flex-row items-center' onClick={handleClick}>
         <div
           className='
             relative
@@ -45,7 +69,7 @@ export default function SideBarItem({
             hover:bg-opacity-20
             dark:hover:bg-opacity-10
             cursor-pointer'
-          onClick={onClick}
+          onClick={handleClick}
         >
           <Icon size={24} />
           <p className='hidden lg:block text-xl'>{label}</p>

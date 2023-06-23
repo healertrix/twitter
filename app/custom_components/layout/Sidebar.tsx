@@ -4,7 +4,10 @@ import SideBarLogo from './SideBarLogo';
 import SideBarItem from './SideBarItem';
 import SideBarTweetBttn from './SideBarTweetBttn';
 import useDarkModeToggle from './SideBarDarkToggle';
+import useCurrentUser from '../hooks/useCurrentUser';
+import { signOut } from 'next-auth/react';
 export default function Sidebar() {
+  const {data:currentUser} = useCurrentUser();
   const [currentTheme, toggleTheme] = useDarkModeToggle();
   const items = [
     
@@ -17,11 +20,13 @@ export default function Sidebar() {
       label: 'Notifications',
       href: '/notifications',
       icon: Bell,
+      auth: true,
     },
     {
       label: 'Profile',
       href: '/profile/123',
       icon: UserCircle2,
+      auth: true,
     },
   ];
   return (
@@ -38,6 +43,7 @@ export default function Sidebar() {
                   label={item.label}
                   href={item.href}
                   icon={item.icon}
+                  auth={item.auth}
                 ></SideBarItem>
               );
             })}
@@ -46,11 +52,14 @@ export default function Sidebar() {
               icon={currentTheme == 'dark' ? Moon : Sun}
               label={currentTheme == 'dark' ? 'Dark Mode' : 'Light Mode '}
             ></SideBarItem>
-            <SideBarItem
-              onClick={() => {}}
-              icon={LogOut}
-              label='Logout'
-            ></SideBarItem>
+            {currentUser && (
+              <SideBarItem
+                onClick={() => signOut()}
+                icon={LogOut}
+                label='Logout'
+              ></SideBarItem>
+            )}
+
             <SideBarTweetBttn></SideBarTweetBttn>
           </div>
         </div>
