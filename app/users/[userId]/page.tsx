@@ -8,8 +8,9 @@ export default function UserView() {
     
     
     const pathname: string|null = usePathname();
-    if (!pathname) return null
-    const id = pathname.split('/').pop();
+    // if (!pathname) return null
+     const id = pathname ? pathname.split('/').pop() : '';
+
     // console.log(id);
     
     
